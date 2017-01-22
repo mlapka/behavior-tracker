@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  h2 #{title}
+  h3 #{message}
+  p Add/Take Away points here.
+
+  h2 Total Points: #{total}
+  //TODO: Implement form with AJAX
+  form(method='post' action='/edit')
+      each btn in addButtons
+        button.btn.btn-primary.btn-large.add-button.edit-button(id = btn.name, value = btn.points)= btn.name
+        br
+      hr
+
+      each btn in negButtons
+        button.btn.btn-primary.btn-large.neg-button.edit-button(id = btn.name, value = btn.points)= btn.name
+        br
+
+      input#btn-name(type = 'hidden', name = 'name')
+      input#btn-value(type = 'hidden', name = 'value')
+
+block scripts
+  script(src="/javascripts/custom.edit.scripts.js")
+
+
